@@ -1,6 +1,9 @@
+// DATA v JSON formátu
 
- // Inicializace mapy - odkazuje na knihovnu Leaflet a následnì nastaví støed mapy a zoom
- const map = L.map('map').setView([49.75, 15.5], 7);
+
+
+// Inicializace mapy - odkazuje na knihovnu Leaflet a následnì nastaví støed mapy a zoom
+const map = L.map('map').setView([49.75, 15.5], 7);
 
  // Pøidání základní vrstvy mapy
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
