@@ -55,20 +55,24 @@ const districts = {
   },
 };
 
+// Vytvoření u každého okresu parametr se susceptibilními lidmi
 for (const district in districts) {
   districts[district]["susceptible"] =
     districts[district]["population"] - districts[district]["infected"];
 }
 
-const beta_intra = 0.3;
-const theta = 0.05;
-const beta_exponent = 1;
-const non_neighbor_transmission_chance = 0.01;
+// Parametry modelu
+const beta_intra = 0.3; // pravděpodobnost přenosu nemoci mezi lidmi v jednom místě
+const theta = 0.05; //pravděpodobnost přenosu mezi sousedními okresy
+const beta_exponent = 1; // Citlivost meziokresního přenosu na velikost obyvatelstva
+const non_neighbor_transmission_chance = 0.01; // Přenos mezi nesousedícími okresy
 const population_max = Math.max(
   ...Object.values(districts).map((d) => d.population)
-);
-const num_days = 50;
+); // Nalezení největšího počtu obyvatel v okresech
+const num_days = 50; // počet dní simulace
 
+
+// Simulování šíření nemoci
 function simulate() {
   if (isRunning) return;
   isRunning = true;
@@ -89,24 +93,30 @@ function simulate() {
   }, 1000);
 }
 
+
+
 function updateSimulationDay() {
   const newValues = {};
   const dayResults = { day: currentDay + 1 };
 
   for (const district in districts) {
+    // Vezmeš si data o tom okresu
     const data = districts[district];
     const S_i = data.susceptible;
     const I_i = data.infected;
     const N_i = data.population;
 
+    // Vyjádření kolik nových lidí se v okrese infikuje
     const delta_I_intra = (beta_intra * S_i * I_i) / N_i;
 
+    // Vypočtení kolik lidí se infikuje ze sousedních okresů
     let delta_I_inter = 0;
     data.neighbors.forEach((neighbor) => {
       const neighborData = districts[neighbor];
       const I_j = neighborData.infected;
       const N_j = neighborData.population;
 
+      // Výpočet kolik lidí se infikuje z tohoto sous ()
       const delta_I_ji =
         theta * (N_j / population_max) ** beta_exponent * (I_j / N_j) * S_i;
       delta_I_inter += delta_I_ji;
@@ -148,6 +158,8 @@ function updateSimulationDay() {
   displayResults(dayResults);
 }
 
+
+// Vypsání aktuálního stavu simulace
 function displayResults(dayResult) {
   const resultsDiv = document.getElementById("results");
   resultsDiv.innerHTML = `<h3>Den ${dayResult.day}</h3>`;
@@ -157,6 +169,7 @@ function displayResults(dayResult) {
   }
 }
 
+// Vykreslení bodů na mapě
 function updateMap() {
   if (window.markers) {
     window.markers.forEach((marker) => map.removeLayer(marker));

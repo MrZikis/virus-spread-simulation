@@ -69,3 +69,14 @@ footer p {
   margin: 0;
   font-size: 14px;
 }
+
+/*K okresùm*/
+.leaflet-interactive:hover {
+  fill: rgba(255, 0, 0, 0.36); /* Èervená barva pro okres Rokycany */
+  fill-opacity: 0.8;
+}
+
+.okres-CZ0642 {
+  fill-opacity: 0.8;
+  fill: red; /* Nastavení barvy výplnì na èervenou pro Prahu */
+}
