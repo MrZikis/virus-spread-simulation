@@ -1,20 +1,20 @@
-// Inicializace mapy - odkazuje na knihovnu Leaflet a následnì nastaví støed mapy a zoom
+// Inicializace mapy - odkazuje na knihovnu Leaflet a nÃ¡slednÄ› nastavÃ­ stÅ™ed mapy a zoom
 const map = L.map('map').setView([49.75, 15.5], 7);
 
- // Pøidání základní vrstvy mapy
+ // PÅ™idÃ¡nÃ­ zÃ¡kladnÃ­ vrstvy mapy
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
  maxZoom: 18,
  // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
- // Naètení GeoJSON souboru (zmìò na správnou cestu k tvému souboru)
+ // NaÄtenÃ­ GeoJSON souboru (zmÄ›Åˆ na sprÃ¡vnou cestu k tvÃ©mu souboru)
  fetch('./okresy.geojson')
  .then(response => response.json())
  .then(data => {
- // Pøidání GeoJSON do mapy
+ // PÅ™idÃ¡nÃ­ GeoJSON do mapy
  L.geoJSON(data, {
      onEachFeature: function(feature, layer) {
-         // Pøidejte CSS tøídu pro kadı okres
+         // PÅ™idejte CSS tÅ™Ã­du pro kaÅ¾dÃ½ okres
          const id_okresu = feature.properties.id.slice(0,6);
          if (feature.properties.id) {
              layer.options.className = 'okres-' + id_okresu;
@@ -44,16 +44,16 @@ async function initializeData() {
         const response = await fetch('./data_okresy.json');
         districts = await response.json();
 
-        // TODO: bude to èerpat ze souboru a pøidá to tu poloku susceptible
+        // TODO: bude to Äerpat ze souboru a pÅ™idÃ¡ to tu poloÅ¾ku susceptible
         for (const district in districts) {
             districts[district]["susceptible"] =
                 districts[district]["population"] - districts[district]["infected"];
         }
 
-        // Jakmile jsou data naètena, mùeme pokraèovat
-        console.log("Naètená data:", districts);
+        // Jakmile jsou data naÄtena, mÅ¯Å¾eme pokraÄovat
+        console.log("NaÄtenÃ¡ data:", districts);
     } catch (error) {
-        console.error("Chyba pøi naèítání JSON:", error);
+        console.error("Chyba pÅ™i naÄÃ­tÃ¡nÃ­ JSON:", error);
     }
 }
 
@@ -63,21 +63,21 @@ function vypsatData() {
     console.log(districts);
 }
 
-// TODO: bude se moct následnì nastavovat pøímo z webu (zadáním, posuvníkem)
+// TODO: bude se moct nÃ¡slednÄ› nastavovat pÅ™Ã­mo z webu (zadÃ¡nÃ­m, posuvnÃ­kem)
 // Parametry modelu
-const beta_intra = 0.3; // pravdìpodobnost pøenosu nemoci mezi lidmi v jednom místì
-const theta = 0.05; //pravdìpodobnost pøenosu mezi sousedními okresy
-const beta_exponent = 1; // Citlivost meziokresního pøenosu na velikost obyvatelstva
-const non_neighbor_transmission_chance = 0.01; // Pøenos mezi nesousedícími okresy
+const beta_intra = 0.3; // pravdÄ›podobnost pÅ™enosu nemoci mezi lidmi v jednom mÃ­stÄ›
+const theta = 0.05; //pravdÄ›podobnost pÅ™enosu mezi sousednÃ­mi okresy
+const beta_exponent = 1; // Citlivost meziokresnÃ­ho pÅ™enosu na velikost obyvatelstva
+const non_neighbor_transmission_chance = 0.01; // PÅ™enos mezi nesousedÃ­cÃ­mi okresy
 const population_max = Math.max(
     ...Object.values(districts).map((d) => d.population)
-); // Nalezení nejvìtšího poètu obyvatel v okresech
-const num_days = 50; // poèet dní simulace
+); // NalezenÃ­ nejvÄ›tÅ¡Ã­ho poÄtu obyvatel v okresech
+const num_days = 50; // poÄet dnÃ­ simulace
 
 
-// TODO: vylepšit a to jede dokud se nezaplní celá republika
-// TODO: uivatel bude moci zastavit a zase spustit simulaci
-// Simulování šíøení nemoci
+// TODO: vylepÅ¡it aÅ¥ to jede dokud se nezaplnÃ­ celÃ¡ republika
+// TODO: uÅ¾ivatel bude moci zastavit a zase spustit simulaci
+// SimulovÃ¡nÃ­ Å¡Ã­Å™enÃ­ nemoci
 function simulate() {
     if (isRunning) return;
     isRunning = true;
@@ -105,24 +105,24 @@ function updateSimulationDay() {
     const dayResults = { day: currentDay + 1 };
 
     for (const district in districts) {
-        // Vezmeš si data o tom okresu
+        // VezmeÅ¡ si data o tom okresu
         const data = districts[district];
         const S_i = data.susceptible;
         const I_i = data.infected;
         const N_i = data.population;
 
-        // Vyjádøení kolik novıch lidí se v okrese infikuje
+        // VyjÃ¡dÅ™enÃ­ kolik novÃ½ch lidÃ­ se v okrese infikuje
         const delta_I_intra = (beta_intra * S_i * I_i) / N_i;
 
-        // TODO: Nejsou zaimplementované sousední okresy, teprve a budou data
-        // Vypoètení kolik lidí se infikuje ze sousedních okresù
+        // TODO: Nejsou zaimplementovanÃ© sousednÃ­ okresy, teprve aÅ¾ budou data
+        // VypoÄtenÃ­ kolik lidÃ­ se infikuje ze sousednÃ­ch okresÅ¯
         let delta_I_inter = 0;
         // data.neighbors.forEach((neighbor) => {
         //     const neighborData = districts[neighbor];
         //     const I_j = neighborData.infected;
         //     const N_j = neighborData.population;
         //
-        //     // Vıpoèet kolik lidí se infikuje z tohoto sous ()
+        //     // VÃ½poÄet kolik lidÃ­ se infikuje z tohoto sous ()
         //     const delta_I_ji =
         //         theta * (N_j / population_max) ** beta_exponent * (I_j / N_j) * S_i;
         //     delta_I_inter += delta_I_ji;
@@ -165,17 +165,17 @@ function updateSimulationDay() {
 }
 
 
-// Vypsání aktuálního stavu simulace
+// VypsÃ¡nÃ­ aktuÃ¡lnÃ­ho stavu simulace
 function displayResults(dayResult) {
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `<h3>Den ${dayResult.day}</h3>`;
     for (const district in districts) {
         const districtData = dayResult[district];
-        resultsDiv.innerHTML += `<p>${district}: Neinfikovanıch: ${districtData.susceptible}, Infikovanıch: ${districtData.infected}</p>`;
+        resultsDiv.innerHTML += `<p>${district}: NeinfikovanÃ½ch: ${districtData.susceptible}, InfikovanÃ½ch: ${districtData.infected}</p>`;
     }
 }
 
-// Vykreslení bodù na mapì
+// VykreslenÃ­ bodÅ¯ na mapÄ›
 function updateMap() {
     if (window.markers) {
         window.markers.forEach((marker) => map.removeLayer(marker));
@@ -212,7 +212,7 @@ document
             simulate();
         } else if (button.innerText === "Pauza") {
             isPaused = !isPaused;
-            button.innerText = isPaused ? "Pokraèovat" : "Pauza";
+            button.innerText = isPaused ? "PokraÄovat" : "Pauza";
         } else if (button.innerText === "Restart") {
             clearInterval(intervalId);
             isRunning = false;
