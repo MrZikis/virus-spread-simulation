@@ -1,387 +1,387 @@
 {
   "CZ0201": {
     "name": "Benešov",
-    "population": "99323",
-    "infected": 0
+    "population": 99323,
+    "infected": 2
   },
   "CZ0202": {
     "name": "Beroun",
-    "population": "96624",
+    "population": 96624,
     "infected": 0
   },
   "CZ0641": {
     "name": "Blansko",
-    "population": "107912",
+    "population": 107912,
     "infected": 0
   },
   "CZ0642": {
     "name": "Brno-město",
-    "population": "379466",
+    "population": 379466,
     "infected": 0
   },
   "CZ0643": {
     "name": "Brno-venkov",
-    "population": "225514",
+    "population": 225514,
     "infected": 0
   },
   "CZ0801": {
     "name": "Bruntál",
-    "population": "89547",
+    "population": 89547,
     "infected": 0
   },
   "CZ0644": {
     "name": "Břeclav",
-    "population": "114801",
+    "population": 114801,
     "infected": 0
   },
   "CZ0411": {
     "name": "Cheb",
-    "population": "87958",
+    "population": 87958,
     "infected": 0
   },
   "CZ0422": {
     "name": "Chomutov",
-    "population": "121480",
+    "population": 121480,
     "infected": 0
   },
   "CZ0531": {
     "name": "Chrudim",
-    "population": "103746",
+    "population": 103746,
     "infected": 0
   },
   "CZ0511": {
     "name": "Česká Lípa",
-    "population": "101962",
+    "population": 101962,
     "infected": 0
   },
   "CZ0311": {
     "name": "České Budějovice",
-    "population": "195533",
+    "population": 195533,
     "infected": 0
   },
   "CZ0312": {
     "name": "Český Krumlov",
-    "population": "60096",
+    "population": 60096,
     "infected": 0
   },
   "CZ0421": {
     "name": "Děčín",
-    "population": "126294",
+    "population": 126294,
     "infected": 0
   },
   "CZ0321": {
     "name": "Domažlice",
-    "population": "54391",
+    "population": 54391,
     "infected": 0
   },
   "CZ0802": {
     "name": "Frýdek-Místek",
-    "population": "212347",
+    "population": 212347,
     "infected": 0
   },
   "CZ0631": {
     "name": "Havlíčkův Brod",
-    "population": "93692",
+    "population": 93692,
     "infected": 0
   },
   "CZ0100": {
     "name": "Hlavní město Praha",
-    "population": "1384732",
+    "population": 1384732,
     "infected": 0
   },
   "CZ0645": {
     "name": "Hodonín",
-    "population": "151096",
+    "population": 151096,
     "infected": 0
   },
   "CZ0521": {
     "name": "Hradec Králové",
-    "population": "162400",
+    "population": 162400,
     "infected": 0
   },
   "CZ0512": {
     "name": "Jablonec nad Nisou",
-    "population": "90171",
+    "population": 90171,
     "infected": 0
   },
   "CZ0711": {
     "name": "Jeseník",
-    "population": "36752",
+    "population": 36752,
     "infected": 0
   },
   "CZ0522": {
     "name": "Jičín",
-    "population": "78713",
+    "population": 78713,
     "infected": 0
   },
   "CZ0632": {
     "name": "Jihlava",
-    "population": "112415",
+    "population": 112415,
     "infected": 0
   },
   "CZ0313": {
     "name": "Jindřichův Hradec",
-    "population": "89283",
+    "population": 89283,
     "infected": 0
   },
   "CZ0412": {
     "name": "Karlovy Vary",
-    "population": "110052",
+    "population": 110052,
     "infected": 0
   },
   "CZ0803": {
     "name": "Karviná",
-    "population": "240319",
+    "population": 240319,
     "infected": 0
   },
   "CZ0203": {
     "name": "Kladno",
-    "population": "164493",
+    "population": 164493,
     "infected": 0
   },
   "CZ0322": {
     "name": "Klatovy",
-    "population": "84614",
+    "population": 84614,
     "infected": 0
   },
   "CZ0204": {
     "name": "Kolín",
-    "population": "103894",
+    "population": 103894,
     "infected": 0
   },
   "CZ0721": {
     "name": "Kroměříž",
-    "population": "103445",
+    "population": 103445,
     "infected": 0
   },
   "CZ0205": {
     "name": "Kutná Hora",
-    "population": "75683",
+    "population": 75683,
     "infected": 0
   },
   "CZ0513": {
     "name": "Liberec",
-    "population": "173890",
+    "population": 173890,
     "infected": 0
   },
   "CZ0423": {
     "name": "Litoměřice",
-    "population": "117582",
+    "population": 117582,
     "infected": 0
   },
   "CZ0424": {
     "name": "Louny",
-    "population": "85381",
+    "population": 85381,
     "infected": 0
   },
   "CZ0206": {
     "name": "Mělník",
-    "population": "109354",
+    "population": 109354,
     "infected": 0
   },
   "CZ0207": {
     "name": "Mladá Boleslav",
-    "population": "127592",
+    "population": 127592,
     "infected": 0
   },
   "CZ0425": {
     "name": "Most",
-    "population": "106773",
+    "population": 106773,
     "infected": 0
   },
   "CZ0523": {
     "name": "Náchod",
-    "population": "107973",
+    "population": 107973,
     "infected": 0
   },
   "CZ0804": {
     "name": "Nový Jičín",
-    "population": "149919",
+    "population": 149919,
     "infected": 0
   },
   "CZ0208": {
     "name": "Nymburk",
-    "population": "101120",
+    "population": 101120,
     "infected": 0
   },
   "CZ0712": {
     "name": "Olomouc",
-    "population": "233588",
+    "population": 233588,
     "infected": 0
   },
   "CZ0805": {
     "name": "Opava",
-    "population": "173753",
+    "population": 173753,
     "infected": 0
   },
   "CZ0806": {
     "name": "Ostrava-město",
-    "population": "312104",
+    "population": 312104,
     "infected": 0
   },
   "CZ0532": {
     "name": "Pardubice",
-    "population": "172224",
+    "population": 172224,
     "infected": 0
   },
   "CZ0633": {
     "name": "Pelhřimov",
-    "population": "71571",
+    "population": 71571,
     "infected": 0
   },
   "CZ0314": {
     "name": "Písek",
-    "population": "70769",
+    "population": 70769,
     "infected": 0
   },
   "CZ0324": {
     "name": "Plzeň-jih",
-    "population": "68918",
+    "population": 68918,
     "infected": 0
   },
   "CZ0323": {
     "name": "Plzeň-město",
-    "population": "188407",
+    "population": 188407,
     "infected": 0
   },
   "CZ0325": {
     "name": "Plzeň-sever",
-    "population": "80666",
+    "population": 80666,
     "infected": 0
   },
   "CZ0315": {
     "name": "Prachatice",
-    "population": "50230",
+    "population": 50230,
     "infected": 0
   },
   "CZ0209": {
     "name": "Praha-východ",
-    "population": "188384",
+    "population": 188384,
     "infected": 0
   },
   "CZ020A": {
     "name": "Praha-západ",
-    "population": "151093",
+    "population": 151093,
     "infected": 0
   },
   "CZ0713": {
     "name": "Prostějov",
-    "population": "107580",
+    "population": 107580,
     "infected": 0
   },
   "CZ0714": {
     "name": "Přerov",
-    "population": "126613",
+    "population": 126613,
     "infected": 0
   },
   "CZ020B": {
     "name": "Příbram",
-    "population": "114366",
+    "population": 114366,
     "infected": 0
   },
   "CZ020C": {
     "name": "Rakovník",
-    "population": "54898",
+    "population": 54898,
     "infected": 0
   },
   "CZ0326": {
     "name": "Rokycany",
-    "population": "48770",
+    "population": 48770,
     "infected": 0
   },
   "CZ0524": {
     "name": "Rychnov nad Kněžnou",
-    "population": "78424",
+    "population": 78424,
     "infected": 0
   },
   "CZ0514": {
     "name": "Semily",
-    "population": "71547",
+    "population": 71547,
     "infected": 0
   },
   "CZ0413": {
     "name": "Sokolov",
-    "population": "85200",
+    "population": 85200,
     "infected": 0
   },
   "CZ0316": {
     "name": "Strakonice",
-    "population": "69773",
+    "population": 69773,
     "infected": 0
   },
   "CZ0533": {
     "name": "Svitavy",
-    "population": "102866",
+    "population": 102866,
     "infected": 0
   },
   "CZ0715": {
     "name": "Šumperk",
-    "population": "118397",
+    "population": 118397,
     "infected": 0
   },
   "CZ0317": {
     "name": "Tábor",
-    "population": "101363",
+    "population": 101363,
     "infected": 0
   },
   "CZ0327": {
     "name": "Tachov",
-    "population": "52941",
+    "population": 52941,
     "infected": 0
   },
   "CZ0426": {
     "name": "Teplice",
-    "population": "124472",
+    "population": 124472,
     "infected": 0
   },
   "CZ0525": {
     "name": "Trutnov",
-    "population": "115073",
+    "population": 115073,
     "infected": 0
   },
   "CZ0634": {
     "name": "Třebíč",
-    "population": "109183",
+    "population": 109183,
     "infected": 0
   },
   "CZ0722": {
     "name": "Uherské Hradiště",
-    "population": "139829",
+    "population": 139829,
     "infected": 0
   },
   "CZ0427": {
     "name": "Ústí nad Labem",
-    "population": "116916",
+    "population": 116916,
     "infected": 0
   },
   "CZ0534": {
     "name": "Ústí nad Orlicí",
-    "population": "135682",
+    "population": 135682,
     "infected": 0
   },
   "CZ0723": {
     "name": "Vsetín",
-    "population": "140171",
+    "population": 140171,
     "infected": 0
   },
   "CZ0646": {
     "name": "Vyškov",
-    "population": "92317",
+    "population": 92317,
     "infected": 0
   },
   "CZ0724": {
     "name": "Zlín",
-    "population": "188987",
+    "population": 188987,
     "infected": 0
   },
   "CZ0647": {
     "name": "Znojmo",
-    "population": "113462",
+    "population": 113462,
     "infected": 0
   },
   "CZ0635": {
     "name": "Žďár nad Sázavou",
-    "population": "117164",
+    "population": 117164,
     "infected": 0
   }
 }

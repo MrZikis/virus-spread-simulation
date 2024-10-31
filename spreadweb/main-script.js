@@ -38,6 +38,7 @@ let currentDay = 0;
 let intervalId;
 
 let districts = {};
+let population_max;
 
 async function initializeData() {
     try {
@@ -50,6 +51,10 @@ async function initializeData() {
                 districts[district]["population"] - districts[district]["infected"];
         }
 
+        population_max = Math.max(
+            ...Object.values(districts).map((d) => d.population)
+        );
+
         // Jakmile jsou data načtena, můžeme pokračovat
         console.log("Načtená data:", districts);
     } catch (error) {
@@ -58,6 +63,10 @@ async function initializeData() {
 }
 
 initializeData();
+
+for (let i = 0; i < 100; i++) {
+    console.log(Math.random());
+}
 
 function vypsatData() {
     console.log(districts);
@@ -68,11 +77,10 @@ function vypsatData() {
 const beta_intra = 0.3; // pravděpodobnost přenosu nemoci mezi lidmi v jednom místě
 const theta = 0.05; //pravděpodobnost přenosu mezi sousedními okresy
 const beta_exponent = 1; // Citlivost meziokresního přenosu na velikost obyvatelstva
-const non_neighbor_transmission_chance = 0.01; // Přenos mezi nesousedícími okresy
-const population_max = Math.max(
-    ...Object.values(districts).map((d) => d.population)
-); // Nalezení největšího počtu obyvatel v okresech
-const num_days = 50; // počet dní simulace
+const non_neighbor_transmission_chance = 0.001; // Přenos mezi nesousedícími okresy
+const num_days = 150; // počet dní simulace
+
+console.log("populace max: " + population_max);
 
 
 // TODO: vylepšit ať to jede dokud se nezaplní celá republika
@@ -133,6 +141,7 @@ function updateSimulationDay() {
                 // !data.neighbors.includes(non_neighbor) &&
                 Math.random() < non_neighbor_transmission_chance
             ) {
+                console.log("snažím se infikovat do jiného okresu");
                 const nonNeighborData = districts[non_neighbor];
                 const I_j = nonNeighborData.infected;
                 const N_j = nonNeighborData.population;
@@ -171,35 +180,23 @@ function displayResults(dayResult) {
     resultsDiv.innerHTML = `<h3>Den ${dayResult.day}</h3>`;
     for (const district in districts) {
         const districtData = dayResult[district];
-        resultsDiv.innerHTML += `<p>${district}: Neinfikovaných: ${districtData.susceptible}, Infikovaných: ${districtData.infected}</p>`;
+        const districtName = districts[district].name;
+        resultsDiv.innerHTML += `<p>${districtName} - Neinfikovaných: ${districtData.susceptible}, Infikovaných: ${districtData.infected}</p>`;
     }
 }
 
 // Vykreslení bodů na mapě
 function updateMap() {
-    if (window.markers) {
-        window.markers.forEach((marker) => map.removeLayer(marker));
-    }
-    window.markers = [];
-
-    Object.keys(districts).forEach((district) => {
+    for (const district in districts) {
         const data = districts[district];
-        const numDots = Math.floor(data.infected / 10);
-
-        for (let i = 0; i < numDots; i++) {
-            const randomLat = data.coords[0] + (Math.random() * 0.05 - 0.1);
-            const randomLng = data.coords[1] + (Math.random() * 0.05 - 0.1);
-
-            const marker = L.circleMarker([randomLat, randomLng], {
-                radius: 5,
-                color: "red",
-                fillColor: "red",
-                fillOpacity: 0.8,
-            }).addTo(map);
-
-            window.markers.push(marker);
-        }
-    });
+        const reddish = data.infected / data.population;
+        document
+            .querySelector(`.okres-${district}`)
+            .setAttribute(
+                "style",
+                `fill: rgba(255, 0, 0, ${reddish}); fill-opacity: 0.7`
+            );
+    }
 }
 
 document
