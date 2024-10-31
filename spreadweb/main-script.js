@@ -64,10 +64,6 @@ async function initializeData() {
 
 initializeData();
 
-for (let i = 0; i < 100; i++) {
-    console.log(Math.random());
-}
-
 function vypsatData() {
     console.log(districts);
 }
@@ -103,7 +99,7 @@ function simulate() {
             isRunning = false;
             document.getElementById("start-simulation").innerText = "Restart";
         }
-    }, 1000);
+    }, 400);
 }
 
 
